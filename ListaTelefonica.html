@@ -1,0 +1,176 @@
+<!DOCTYPE html >
+<html lang="en" ng-app="ListaTelefonica">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Telefonica</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/ui.css">
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-1.8.2/angular.js"></script>
+    <script src="lib/angular-1.8.2/angular-messages.js"></script>
+    <script src="js/controllers/listaTelefonicaCtrl.js"></script>
+    <script src="js/controllers/services/contatosAPIServices.js"></script>
+    <script src="js/controllers/services/operadorasAPIServices.js"></script>
+    <script src="js/controllers/value/configValue.js"></script>
+    <script src="filters/nameFilter.js"></script>
+    <script src="filters/ellipsisFilter.js"></script>
+    <script src="js/controllers/directives/uiAlertDirective.js"></script>
+    <script src="js/controllers/directives/uiDateDirective.js"></script>
+    <script src="js/controllers/directives/uiAccordionDirective.js"></script>
+
+   
+        
+     
+  
+</head>
+<body ng-controller="ListaTelefonicaCtrl">
+    <div class="jumbotron">
+        <div style="text-align:center">
+            <img src="assets/logo.png" class="img-fluid" alt="imagem responsiva">
+        </div>
+       
+      
+
+      <ui-accordions>
+          <ui-accordion title="Catálogo de Preços - CELULAR">
+            
+              <div style="text-align:center" class="card-group">
+                <div class="card">
+                  <img class="card-img-top" src="assets/claro.jpg" alt="Imagem de capa do card">
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-dark">PREÇO: R$15.00</button>
+                    <!-- <h5 style="background: yellow" class="card-title">PREÇO: R$15.00</h5> -->
+                    <p class="card-text"></p>
+                  </div>
+                 
+                </div>
+                <div class="card">
+                  <img class="card-img-top" src="assets/oii.png" alt="Imagem de capa do card">
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-dark">PREÇO: R$16.00</button>
+                    <!-- <h5 style="background: #F2DEDE" class="card-title">PREÇO</h5> -->
+                    <p class="card-text"></p>
+                  </div>
+                 
+                </div>
+                <div class="card">
+                  <img class="card-img-top" src="assets/vivo.png" alt="Imagem de capa do card">
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-dark">PREÇO: R$17.00</button>
+                    <!-- <h5 style="background: #F2DEDE" class="card-title">PREÇO</h5> -->
+                    <p class="card-text"></p>
+                  </div>
+                 
+                </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="assets/Tiim.jpg" alt="Imagem de capa do card" height="180" width="200">
+                <div style="text-align:center" class="card-body">
+                    <button type="button" class="btn btn-outline-dark">PREÇO: R$14.00</button>
+                  <!-- <h5 style="background: #F2DEDE" style="text-align:center" class="card-title">PREÇO</h5> -->
+                  <p class="card-text"></p>
+                </div>
+                <div style="text-align:center" class="card-footer">
+                  <small class="text-muted">PhoneGap</small>
+                </div>
+              </div>
+          
+              
+            
+          </ui-accordion>
+
+          <ui-accordion title="Catálogo de Preços - FIXO">
+            <div class="row">
+                <div class="col-sm-6">
+                  <div class="card">
+                    <img class="card-img-top" src="assets/embratel.png" alt="Imagem de capa do card">
+                    <div style="text-align:center" class="card-body">
+                        <button type="button" class="btn btn-outline-dark">PREÇO: R$17.00</button>
+                      <p class="card-text"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <img class="card-img-top" src="assets/gvt.jpg" alt="Imagem de capa do card" height="146">
+                    <div style="text-align:center" class="card-body">
+                        <button type="button" class="btn btn-outline-dark">PREÇO: R$17.00</button>
+                      <p class="card-text"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </ui-accordion>
+      </ui-accordions>
+
+
+        <div id="opa">
+            <ui-alert title='message'message='error'></ui-alert>
+        </div>
+
+      
+
+      
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">🔎</span>
+    </div>
+    <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="O que você está buscando?">
+</div>
+        <table ng-show="contatos.length > 0" class="table">
+            <tr>
+                <th></th>
+               <th><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
+               <th><a href="" ng-click="ordenarPor('telefone')">Telefone</a></th>
+               <th><a href="" ng-click="ordenarPor('operadora')">Operadora</a></th>
+               <th><a href="" ng-click="ordenarPor('data')">Data</a></th>
+            </tr>
+            <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos | filter:criterioDeBusca | orderBy:'criterioDeOrdenacao':direcaoDaOrdenacao">
+                <td><input type="checkbox" ng-model="contato.selecionado"></td>
+                <td>{{contato.nome | name | ellipsis:20}}</td>
+                <td>{{contato.telefone}}</td>
+                <td>{{contato.operadora.nome}}</td>
+                <td>{{contato.date | date: "dd/MM/yyyy HH:mm"}}</td>
+                <td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div></td>
+                
+            </tr>
+         </table>
+         <hr/>
+        <form name="contatoForm">
+         <input class="form-control" type="text" ng-model="contato.nome" name="nome" placeholder="Nome" ng-required="true" ng-minlength="10"/>
+         <input class="form-control" type="text" ng-model="contato.telefone" name="telefone" placeholder="Telefone" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/"/>
+         <input class="form-control" type="text" ng-model="contato.data" name="data" placeholder="Data" ui-Date>
+         <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras | orderBy:'nome'">
+              <option value="">Selecione uma operadora</option>
+         </select>
+        </form>
+        <div ng-show="contatoForm.nome.$error.required && contatoForm.nome.$dirty" class="alert alert-danger">
+            Por favor, preencha o campo nome!
+        </div>
+        <div ng-show="contatoForm.nome.$error.minlength" class="alert alert-danger">
+            O campo nome deve ter no mínimo 10 caracteres
+        </div>
+
+       
+        <div ng-show="contatoForm.telefone.$error.required && contatoForm.telefone.$dirty" class="alert alert-danger">
+            Por favor, preencha o telefone!
+        </div>
+        <div ng-show="contatoForm.telefone.$error.pattern" class="alert alert-danger">
+            O campo telefone deve ter o formato DDDDD-DDDD
+        </div>
+         <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar Contato</button>
+         <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="isContatoSelecionado(contatos)">Apagar Contatos</button>
+
+         
+    </div>
+
+    <div ng-include="'view/footer.html'"></div>
+
+  
+
+  
+</body>
+</html>
