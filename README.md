@@ -65,17 +65,17 @@
     </td>
     <td align="center">
       <a href="#">
-        <img align="rigth" alt="DaviAfonso88-javascript" height="60" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"><br>
+        <img align="rigth" alt="DaviAfonso88-bootstrap" height="60" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg"><br>
         <sub>
-          <b>Javascript</b>
+          <b>Bootstrap</b>
         </sub>
       </a>
     </td>
     <td align="center">
       <a href="#">
-        <img align="rigth" alt="DaviAfonso88-bootstrap" height="60" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg"><br>
+        <img align="rigth" alt="DaviAfonso88-javascript" height="60" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"><br>
         <sub>
-          <b>Bootstrap</b>
+          <b>Javascript</b>
         </sub>
       </a>
     </td>
