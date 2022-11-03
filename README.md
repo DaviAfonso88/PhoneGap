@@ -1,12 +1,5 @@
 # PhoneGap
 
-<p align="center">
-   <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/>
-</p>
-
-
-
-<br>
 <br>
 <br>
 
@@ -22,7 +15,29 @@
 ![image](https://user-images.githubusercontent.com/89953265/199284454-939101e6-aeb1-4469-a4e0-08cb64b884ea.png)
 
 
+## 🧠 Qual o intuito do projeto?
 
+> Desenvolvimento de uma API contruída em AngularJS, realizando a construção do front-end juntamente com Bootstrap e utilizando Node.js junto com Express.js para integração do back-end, fazendo assim a comunicação entre os sistemas. 
+
+> A API tem como objetivo o cadastro de contatos com suas respectivas operadoras telefônicas escolhidas `(celular ou fixo)`, acompanhado dos nomes e telefones dos usuários juntamente com a data de cadastro. Assim armazenanando os dados dos cadastros em seu back-end, podendo ou não excluir o mesmo armazenado.
+
+<br>
+
+## 💻 Requisitos 
+
+
+
+- [x] Accordions para catálogos de preços personalizados.
+- [x] Critério de busca para barra de pesquisa.
+- [x] Critérios de ordenção por `nome`, `telefone`, `operadora` e `data`.
+- [x] Checkbox personalizada.
+- [x] Avisos de correção de erros como: `dados não carregaodos` e `formato de digitação`.
+- [x] Filtros para correção automática de nome em letra minúscula e quantidades de caracteres delimitados ao adicionar contato.
+- [x] Diretiva para modificar automaticamente o formato da data digitada.
+- [x] Adicionar e Excluir contatos.
+
+
+<br>
 
 <br>
 <br>
